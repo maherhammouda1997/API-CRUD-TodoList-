@@ -95,6 +95,13 @@ import java.util.List;
                 connection.commit();
                 System.out.println("Successfully commited changes to the database !");
             } catch (SQLException e) {
+                try {
+                    //
+                    connection.rollback();
+                    System.out.println("Successfully rolled back changes from the database !");
+                } catch (SQLException e1) {
+                    System.out.println("Could not rollback updates " + e1.getMessage());
+                }
                 System.out.println(e.getMessage());
             }
             return todo;
@@ -159,6 +166,13 @@ import java.util.List;
                 connection.commit();
                 System.out.println("Successfully committed changes to the database !");
             } catch (SQLException e) {
+                try {
+                    //
+                    connection.rollback();
+                    System.out.println("Successfully rolled back changes from the database !");
+                } catch (SQLException e1) {
+                    System.out.println("Could not rollback updates " + e1.getMessage());
+                }
                 System.out.println(e.getMessage());
             }
             return null;
